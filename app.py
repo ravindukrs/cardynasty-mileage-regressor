@@ -26,6 +26,8 @@ def predict():
     mydata[:, 0] = le_X_0.transform(mydata[:, 0])
     mydata = scaler.transform(mydata)
     prediction = loaded_model.predict(mydata)
+    response = jsonify({'some': 'data'})
+    response.headers.add('Access-Control-Allow-Origin', '*')
     return jsonify({"mileage":round(prediction[0])})
 
 
